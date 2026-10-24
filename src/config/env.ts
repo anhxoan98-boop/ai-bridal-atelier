@@ -1,10 +1,9 @@
-/**
- * Client-side configuration. Only PUBLIC values may live here — anything read
- * via import.meta.env with the VITE_ prefix is bundled into the browser code.
- * Secret keys (AI providers, Supabase service role) are read only inside /api.
- */
-const supabaseUrl = (import.meta.env.VITE_SUPABASE_URL ?? '').trim()
-const supabaseAnonKey = (import.meta.env.VITE_SUPABASE_ANON_KEY ?? '').trim()
+const SUPABASE_URL = 'https://udzrprvunbmuibtzwnqo.supabase.co'
+const SUPABASE_ANON_KEY =
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVkenJwcnZ1bmJtdWlidHp3bnFvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTI4NzEzMjYsImV4cCI6MjEwODQ0NzMyNn0.K2l-Kx4gEMeitUGWMg7y8STEihFGF-6y-S-VAwwOnns'
+
+const supabaseUrl = SUPABASE_URL
+const supabaseAnonKey = SUPABASE_ANON_KEY
 
 export const env = {
   supabaseUrl,
