@@ -1,0 +1,103 @@
+@import 'tailwindcss';
+
+/* ── Design tokens: ivory, champagne, antique gold, soft ink ── */
+@theme {
+  --color-ivory: #faf7f2;
+  --color-pearl: #f4efe7;
+  --color-champagne: #e9dfcf;
+  --color-line: #e4dccf;
+  --color-gold: #a8875a;
+  --color-gold-deep: #86683f;
+  --color-ink: #2a2522;
+  --color-ink-soft: #4a423c;
+  --color-muted: #847a70;
+  --color-blush: #f6e8e4;
+  --color-rose: #9c3d3d;
+  --color-sage: #5f7360;
+
+  --font-display: 'Cormorant Garamond', 'Times New Roman', serif;
+  --font-sans: 'Jost', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --tracking-luxe: 0.28em;
+  --tracking-wide-sm: 0.16em;
+
+  --shadow-soft: 0 1px 2px rgb(42 37 34 / 0.04), 0 8px 30px rgb(42 37 34 / 0.06);
+  --shadow-lift: 0 2px 4px rgb(42 37 34 / 0.05), 0 18px 50px rgb(42 37 34 / 0.10);
+
+  --animate-fade-up: fade-up 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+  }
+  body {
+    @apply bg-ivory font-sans text-ink antialiased;
+    font-weight: 300;
+    min-height: 100dvh;
+  }
+  h1, h2, h3 {
+    @apply font-display text-ink;
+    font-weight: 400;
+  }
+  ::selection {
+    background: var(--color-champagne);
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 2px;
+  }
+  button:disabled {
+    cursor: not-allowed;
+  }
+}
+
+@layer components {
+  .eyebrow {
+    @apply text-[11px] font-normal uppercase text-gold;
+    letter-spacing: var(--tracking-luxe);
+  }
+  .field-label {
+    @apply mb-2 block text-[11px] font-normal uppercase text-muted;
+    letter-spacing: var(--tracking-wide-sm);
+  }
+  .field-input {
+    @apply w-full rounded-none border border-line bg-white/70 px-4 py-3 text-[15px] text-ink placeholder:text-muted/70 transition focus:border-gold focus:bg-white focus:outline-none;
+  }
+  .hairline {
+    @apply h-px w-12 bg-gold/60;
+  }
+  /* Subtle checkerboard so transparent PNGs read correctly */
+  .checker {
+    background-color: #fbf9f5;
+    background-image:
+      linear-gradient(45deg, #f1ece4 25%, transparent 25%),
+      linear-gradient(-45deg, #f1ece4 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, #f1ece4 75%),
+      linear-gradient(-45deg, transparent 75%, #f1ece4 75%);
+    background-size: 20px 20px;
+    background-position: 0 0, 0 10px, 10px -10px, -10px 0;
+  }
+  input[type='range'].slider {
+    @apply h-1 w-full cursor-pointer appearance-none rounded-full bg-line;
+  }
+  input[type='range'].slider::-webkit-slider-thumb {
+    @apply h-4 w-4 appearance-none rounded-full border-2 border-white bg-gold shadow;
+  }
+  input[type='range'].slider::-moz-range-thumb {
+    @apply h-4 w-4 rounded-full border-2 border-white bg-gold shadow;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
