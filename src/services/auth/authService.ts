@@ -8,7 +8,7 @@ function friendly(message: string): string {
   if (m.includes('invalid login')) return 'That email and password do not match. Please try again.'
   if (m.includes('already registered')) return 'An account with this email already exists. Please log in.'
   if (m.includes('password')) return message
-  return 'Something went wrong. Please try again.'
+     return 'Something went wrong: ' + message
 }
 
 /** Thin wrapper over Supabase Auth so pages never import the SDK directly. */
